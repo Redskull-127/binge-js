@@ -8,6 +8,8 @@ import Spline from '@splinetool/react-spline';
 import Intro from "../components/Intro";
 import { loadModels } from "../components/faceApi";
 import Facetest from "../components/FaceTest";
+import Button from "../components/Button";
+
 const inter = Open_Sans({ subsets: ["latin"] });
 
 export default function Home() {
@@ -29,8 +31,9 @@ export default function Home() {
       <Spline scene="https://prod.spline.design/kn0zvs7BJK7kzbqM/scene.splinecode" />
       <main className={styles.main}>
         <Intro />
+        <Button />
       </main>
-      <Facetest />
+      {/* <Facetest /> */}
     </div>
   );
 }

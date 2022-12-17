@@ -1,0 +1,27 @@
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 7rem;
+    background-color: rgb(38, 38, 38);
+}
+
+.button{
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s ease-in-out;
+    padding: 10px;
+    text-align: center;
+    user-select: none;
+    background-color: #ff8906;
+    color: #fffffe;
+    border-radius: 5px;
+}
+
+.button:active{
+    scale: 0.8;
+    color: #000;
+    border: #ff8906 10px solid;
+}
