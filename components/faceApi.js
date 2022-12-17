@@ -1,14 +1,14 @@
 import * as faceapi from 'face-api.js';
 
 export const loadModels = () => {
-  const MODEL_URL = `/models`;
+  const MODEL_URL = `https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights/`;
 
   return Promise.all([
-    faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
-    faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL),
-    faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL),
-    faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL),
-    faceapi.nets.ageGenderNet.loadFromUri(MODEL_URL),
+    faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL + `tiny_face_detector_model-weights_manifest.json`),
+    faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL + `face_landmark_68_model-weights_manifest.json`),
+    faceapi.nets.faceRecognitionNet.loadFromUri(MODEL_URL + `face_recognition_model-weights_manifest.json`),
+    faceapi.nets.faceExpressionNet.loadFromUri(MODEL_URL + `face_expression_model-weights_manifest.json`),
+    // faceapi.nets.ageGenderNet.loadFromUri(MODEL_URL),
   ]);
 };
 
@@ -27,7 +27,7 @@ export const detectFaces = async (image) => {
     .detectAllFaces(image, new faceapi.TinyFaceDetectorOptions({ inputSize: 320 }))
     .withFaceLandmarks()
     .withFaceExpressions()
-    .withAgeAndGender();
+    // .withAgeAndGender();
 
   return faceapi.resizeResults(faces, displaySize);
 };
