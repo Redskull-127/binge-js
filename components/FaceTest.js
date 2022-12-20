@@ -1,10 +1,13 @@
 import { useEffect, useState, useRef } from "react";
 import { loadModels, detectFaces, drawResults } from "./faceApi";
-import classnames from "classnames";
 import Webcam from "react-webcam";
 import styles from "../styles/FaceTest.module.css";
+import { Open_Sans } from "@next/font/google";
+import Spinner from "./Spinner";
 
-export default function Facetest() {
+const openSans = Open_Sans({ subsets: ["latin"] });
+
+export default function Facetest({isSucess}) {
   const [Loaded, setLoaded] = useState(false);
   const camera = useRef();
   const cameraCanvas = useRef();
@@ -34,6 +37,12 @@ export default function Facetest() {
   };
 
   useEffect(() => {
+    if(cameraCanvas.current !== null){
+      console.log(cameraCanvas);
+    }
+  }, []);
+
+  useEffect(() => {
     if (camera !== null && Loaded == true) {
       const ticking = setInterval(async () => {
         await getFaces();
@@ -49,12 +58,11 @@ export default function Facetest() {
 
   return (
     <>
-      <div className={styles.camera}>
-        <p className={styles.scroll_down}>Scroll down for results ↓</p>
+      <div className={`${styles.camera} ${openSans.className}`}>
         <div className={styles.camera__wrapper}>
           <Webcam audio={false} ref={camera} width="100%" height="auto" />
           <canvas
-            className={`${styles.webcamoverlay}`}
+            className={`${styles.webcamoverlay} ${openSans.className}`}
             ref={cameraCanvas}
             style={{ zIndex: 99 }}
           />
@@ -64,9 +72,12 @@ export default function Facetest() {
               function getMaxValueKey(obj) {
                 return Object.keys(obj).reduce(function (a, b) { return obj[a] > obj[b] ? a : b; });
             }
-            console.log(getMaxValueKey(result.expressions));     
+            // console.log(getMaxValueKey(result.expressions));
+            setTimeout(() => {
+              isSucess(getMaxValueKey(result.expressions));
+            }, 3000);
             })
-          : "please wait"}
+          : <Spinner/>}
       </div>
     </>
   );
