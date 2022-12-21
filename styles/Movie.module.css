@@ -1,18 +1,19 @@
 .container{
-    width: 100%;
-    height: 100%;
-    display: flex;
+    margin-top: 5rem;
+    width: 70%;
+    display: grid;
+    grid-template-columns: 20% 80%;
     justify-content: center;
-    align-items: center;
+    background-color: #662038;
+    padding: 2rem;
+    border-radius: 14px;
 }
 
-.main{
-    min-height: 100vh;
-    width: 100%;
+.info{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
 
 .title{
@@ -27,4 +28,8 @@
     font-size: 1.5rem;
     color: #a7a9be;
     text-align: center;
+}
+
+.poster{
+    height: 250px;
 }
