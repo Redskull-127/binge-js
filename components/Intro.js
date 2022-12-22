@@ -2,18 +2,20 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import styles from "../styles/Intro.module.css";
 import { Open_Sans } from "@next/font/google";
+import Button from "./Button";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 export default function Intro() {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} id="intro">
       <h1 className={`${styles.title} ${openSans.className}`}>BINGE</h1>
       <p className={`${styles.desc} ${openSans.className}`}>
-        An AI Based Genure Selector
+        An AI Based Genure & Movies Selector! 
       </p>
       <div className={styles.row}>
         <div className={styles.card}>
-            <h2 className={`${styles.title} ${openSans.className}`}>Just scan your face and done!</h2>
+            <h2 className={`${styles.title} ${openSans.className}`}>Just scan your face and done!</h2><br/>
+            <Button />
         </div>
         <svg
           xmlns="http://www.w3.org/2000/svg"

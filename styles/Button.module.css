@@ -1,10 +1,7 @@
 .container{
-    width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 7rem;
-    background-color: rgb(38, 38, 38);
+    justify-content: flex-start;
+    flex-direction: row;
 }
 
 .button{
@@ -12,16 +9,41 @@
     text-decoration: none;
     font-size: 1.5rem;
     transition: all 0.3s ease-in-out;
-    padding: 10px;
+    padding: 1rem 10rem 1rem 10rem;
     text-align: center;
     user-select: none;
     background-color: #ff8906;
     color: #fffffe;
     border-radius: 5px;
+    width: 475px;
+    height: 4.1rem;
 }
 
 .button:active{
     scale: 0.8;
     color: #000;
     border: #ff8906 10px solid;
+}
+
+.text{
+    position: absolute;
+    left: 18%;
+}
+
+.container:hover .empty{
+    border-radius: 4px;
+    position: absolute;
+    /* z-index: 11; */
+    height: 4.1rem;
+    background-color: #313030;
+    animation: slide 1s ease-in-out forwards;
+}
+
+@keyframes slide {
+    0% {
+        width: 0px;
+    }
+    100% {
+        width: 475px;
+    }
 }

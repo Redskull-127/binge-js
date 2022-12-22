@@ -20,7 +20,12 @@ export default function Scan() {
     }
   };
 
-  
+  const handleCamPermission = () => {
+    navigator.permissions.query({ name: "camera" }).then((permissionObj) => {
+      console.log(permissionObj.state);
+    });
+  }
+
   useEffect(() => {
     loadModels();
     navigator.permissions.query({ name: "camera" }).then((res) => {
@@ -31,26 +36,26 @@ export default function Scan() {
       }
     });
   }, []);
-  
+
   useEffect(() => {
     const handlePush = (res) => {
       if (res != "" && res != undefined && res != null) {
         router.push("/explore");
       }
     };
-    if(isSucess != ""){
+    if (isSucess != "") {
       sessionStorage.setItem("emotion", isSucess);
       handlePush(isSucess);
     }
-  },[isSucess, router])
+  }, [isSucess, router]);
 
   return (
     <div className={styles.container}>
       <Head>
         <title>BINGE</title>
-        <meta name="description" content="BINGE" />
+        <meta name="description" content="BINGE | SCAN" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="https://img.icons8.com/color/48/null/spyro.png" />
       </Head>
       <main className={styles.main}>
         {loading ? (

@@ -3,13 +3,25 @@
     height: 80px;
     /* background-color: transparent; */
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     padding: 0px 10px;
     position: absolute;
 }
 
-.Nav a{
+.Nav .items{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    /* background-color: #000; */
+}
+
+.Nav .items img{
+    cursor: pointer;
+}
+
+.Nav .items a{
     cursor: pointer;
     text-decoration: none;
     color: #fff;
@@ -23,15 +35,33 @@
 }
 
 
-.Nav:hover > :hover{
+.Nav .items a:hover {
     background-color: #ff8906;
     color: #fffffe;
     border-radius: 5px;
 }
 
-.Nav:hover > :active{
+.Nav .items a:active{
     scale: 0.8;
     color: #000;
+}
+
+.credits{
+    margin-right: 20px;
+    text-transform: capitalize;
+    font-size: 1.2rem;
+    word-spacing: 0.2rem;
+}
+
+.credits a{
+    transition: 0.3s;
+}
+
+.credits a:hover{
+    padding: 10px;
+    border-radius: 7px;
+    cursor: pointer;
+    background-color: #ff8906;
 }
 
 /*  Dead Code  */

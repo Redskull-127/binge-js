@@ -5,6 +5,8 @@ import { Open_Sans } from "@next/font/google";
 import { useEffect, useState, useRef } from "react";
 import useSWR from "swr";
 import Spinner from "../components/Spinner";
+import HomeButton from "../components/HomeButton";
+
 const openSans = Open_Sans({ subsets: ["latin"] });
 const fetcher = (url) => fetch(url).then((res) => res.json());
 
@@ -32,10 +34,11 @@ export default function Explore() {
     <div className={styles.container}>
       <Head>
         <title>BINGE</title>
-        <meta name="description" content="BINGE" />
+        <meta name="description" content="BINGE | RESULT" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="https://img.icons8.com/color/48/null/spyro.png" />
       </Head>
+      <HomeButton />
       <main className={styles.main}>
         <>
           {emotion != "" && emotionData ? (
