@@ -1,12 +1,13 @@
 .container{
     margin-top: 5rem;
-    width: 70%;
+    width: 80%;
     display: grid;
     grid-template-columns: 20% 80%;
     justify-content: center;
     background-color: #662038;
     padding: 2rem;
     border-radius: 14px;
+    height: 350px;
 }
 
 .info{
@@ -17,19 +18,28 @@
 }
 
 .title{
-    font-size: 2.2rem;
+    font-size: 2rem;
     text-transform: uppercase;
     color: #ff8906;
     text-align: center;
 }
 
 .desc{
-    margin-top: 2.5rem;
+    margin-top: 2.0rem;
     font-size: 1.2rem;
     color: #a7a9be;
     text-align: center;
 }
 
+.over{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 100%;
+    overflow-y: auto;
+}
+
 .poster{
-    height: 250px;
+    height: 280px;
 }

@@ -1,16 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/alt-text */
 import styles from "../styles/Movie.module.css";
+import morestyles from "../styles/ExploreMore.module.css";
 import { Open_Sans } from "@next/font/google";
 import { useEffect, useState } from "react";
 import Spinner from "./Spinner";
 import useSWR from "swr";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
-const imgurl = "http://image.tmdb.org/t/p/w500";
+const imgurl = "http://image.tmdb.org/t/p/w500/";
 
 export default function Movie({ name, id }) {
   const [data, setData] = useState({});
+  const [dataProps, setDataProps] = useState({});
   const [error, setError] = useState(false);
   useEffect(() => {
     fetch(
@@ -20,6 +22,7 @@ export default function Movie({ name, id }) {
       .then((res) => {
         const random = Math.floor(Math.random() * res.results.length);
         setData(res.results[random]);
+        setDataProps(res);
       })
       .catch((err) => {
         console.log(err);
@@ -35,20 +38,24 @@ export default function Movie({ name, id }) {
   return (
     <>
       {data && data != null ? (
-        <div className={styles.container}>
-          <img className={styles.poster} src={imgurl + data.poster_path} />
-          <div className={styles.info}>
-            <h1 className={`${styles.title} ${openSans.className}`}>
-              {data.title}
-            </h1>
-            <p className={`${styles.desc} ${openSans.className}`}>
-              {data.overview}
-            </p>
-            <p className={`${styles.desc} ${openSans.className}`}>
-              {data.vote_average}/10
-            </p>
+        <>
+          <div className={styles.container}>
+            <img className={styles.poster} src={imgurl + data.poster_path} />
+            <div className={styles.info}>
+              <h1 className={`${styles.title} ${openSans.className}`}>
+                {data.title}
+              </h1>
+              <p
+                className={`${styles.desc} ${styles.over} ${openSans.className}`}
+              >
+                {data.overview}
+              </p>
+              <p className={`${styles.desc} ${openSans.className}`}>
+                {data.vote_average}/10
+              </p>
+            </div>
           </div>
-        </div>
+        </>
       ) : (
         <Spinner />
       )}

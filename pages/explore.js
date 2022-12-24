@@ -6,6 +6,7 @@ import { useEffect, useState, useRef } from "react";
 import useSWR from "swr";
 import Spinner from "../components/Spinner";
 import HomeButton from "../components/HomeButton";
+import ExploreMore from "../components/ExploreMore";
 
 const openSans = Open_Sans({ subsets: ["latin"] });
 const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -28,34 +29,51 @@ export default function Explore() {
     }
   }, [data, emotion, emotionData]);
 
-  if (error) return <p className={`${styles.title} ${openSans.className}`}>Something went wrong!</p>;
+  if (error)
+    return (
+      <p className={`${styles.title} ${openSans.className}`}>
+        Something went wrong!
+      </p>
+    );
 
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>BINGE</title>
-        <meta name="description" content="BINGE | RESULT" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="https://img.icons8.com/color/48/null/spyro.png" />
-      </Head>
-      <HomeButton />
-      <main className={styles.main}>
-        <>
-          {emotion != "" && emotionData ? (
-            <>
-              <p className={`${styles.title} ${openSans.className}`}>
-                You seems to be {emotion}!
-              </p>
-              <p className={`${styles.desc} ${openSans.className}`}>
-                We choose &quot;{emotionData.name}&quot; for you.<br/>Here&apos;s a movie suggestion based on your mood! 😁
-              </p>
-              <Movie name={emotionData.name} id={emotionData.id} />
-            </>
-          ) : (
-            <Spinner />
-          )}
-        </>
-      </main>
-    </div>
+    <>
+      <div className={styles.container}>
+        <Head>
+          <title>BINGE</title>
+          <meta name="description" content="BINGE | RESULT" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <link
+            rel="icon"
+            href="https://img.icons8.com/color/48/null/spyro.png"
+          />
+        </Head>
+        <HomeButton />
+        <main className={styles.main}>
+          <>
+            {emotion != "" && emotionData ? (
+              <>
+                <p className={`${styles.title} ${openSans.className}`}>
+                  You seems to be {emotion}!
+                </p>
+                <p className={`${styles.desc} ${openSans.className}`}>
+                  We choose &quot;{emotionData.name}&quot; for you.
+                  <br />
+                  Here&apos;s a movie suggestion based on your mood! 😁
+                </p>
+                <Movie name={emotionData.name} id={emotionData.id} />
+                <p className={`${styles.desc} ${openSans.className}`}>
+                  Scroll Down for more results!
+                </p>
+                
+              </>
+            ) : (
+              <Spinner />
+            )}
+          </>
+        </main>
+      </div>
+      
+    </>
   );
 }

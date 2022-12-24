@@ -31,12 +31,13 @@
 }
 
 .container:hover .empty{
+    cursor: pointer;
     border-radius: 4px;
     position: absolute;
     /* z-index: 11; */
     height: 4.1rem;
     background-color: #313030;
-    animation: slide 1s ease-in-out forwards;
+    animation: slide 0.5s ease-in-out forwards;
 }
 
 @keyframes slide {
